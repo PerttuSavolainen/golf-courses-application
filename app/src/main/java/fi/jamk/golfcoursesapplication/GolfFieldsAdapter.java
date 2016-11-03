@@ -1,5 +1,6 @@
 package fi.jamk.golfcoursesapplication;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -18,6 +19,8 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.URL;
 import java.util.List;
+
+import static android.support.v4.app.ActivityCompat.startActivity;
 
 /**
  * Created by Pedo on 1.11.2016.
@@ -109,9 +112,15 @@ public class GolfFieldsAdapter extends RecyclerView.Adapter<GolfFieldsAdapter.Vi
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    String name = gfList.get(position).name;
-                    Toast.makeText(view.getContext(), name, Toast.LENGTH_SHORT).show();
+                    //int position = getAdapterPosition();
+                    //String name = gfList.get(position).name;
+                    //Toast.makeText(view.getContext(), name, Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(view.getContext(), DetailActivity.class);
+                    intent.putExtra("fieldName", golffieldNameTextView.getText().toString());
+                    intent.putExtra("fieldAddress", golffieldAddressTextView.getText().toString());
+                    //intent.putExtra("fieldName", golffieldNameTextView.getText().toString());
+                    //intent.putExtra("fieldName", golffieldNameTextView.getText().toString());
+                    view.getContext().startActivity(intent);
                 }
             });
 
