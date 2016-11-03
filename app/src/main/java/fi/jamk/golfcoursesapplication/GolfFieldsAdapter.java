@@ -112,14 +112,16 @@ public class GolfFieldsAdapter extends RecyclerView.Adapter<GolfFieldsAdapter.Vi
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
-                    //int position = getAdapterPosition();
-                    //String name = gfList.get(position).name;
-                    //Toast.makeText(view.getContext(), name, Toast.LENGTH_SHORT).show();
+                    int position = getAdapterPosition();
                     Intent intent = new Intent(view.getContext(), DetailActivity.class);
                     intent.putExtra("fieldName", golffieldNameTextView.getText().toString());
                     intent.putExtra("fieldAddress", golffieldAddressTextView.getText().toString());
-                    //intent.putExtra("fieldName", golffieldNameTextView.getText().toString());
-                    //intent.putExtra("fieldName", golffieldNameTextView.getText().toString());
+                    intent.putExtra("fieldPhone", golffieldPhoneTextView.getText().toString());
+                    intent.putExtra("fieldEmail", golffieldEmailTextView.getText().toString());
+                    intent.putExtra("fieldDesc", gfList.get(position).getDescription());
+                    intent.putExtra("fieldUrl", gfList.get(position).getUrl());
+                    intent.putExtra("fieldImageUrl", gfList.get(position).getImageUrl());
+                    intent.putExtra("fieldLatlng", gfList.get(position).getLat() + "," + gfList.get(position).getLng());
                     view.getContext().startActivity(intent);
                 }
             });
